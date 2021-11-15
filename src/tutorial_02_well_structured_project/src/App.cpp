@@ -1,4 +1,5 @@
 #include "AppComponent.hpp"
+#include "controller/MyController.hpp"
 
 
 #include "oatpp/network/Server.hpp"
@@ -45,7 +46,9 @@ void run()
   OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router);
 
   /* Route GET - "/hello" requests to Handler */
-  router->route("GET", "/hello", std::make_shared<Handler>());
+  // router->route("GET", "/hello", std::make_shared<Handler>());
+  auto myController = std::make_shared<MyController>();
+  myController->addEndpointsToRouter(router);
 
   /* Get connection handler component */
   OATPP_COMPONENT(std::shared_ptr<oatpp::network::ConnectionHandler>, connectionHandler);
