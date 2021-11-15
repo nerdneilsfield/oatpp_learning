@@ -12,6 +12,10 @@ cmake-build-*/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.swp
+.cache/
+.clangd/
+.ccls-cache/
+compile_commands.json
 *~
 
 # OS Generated Files
