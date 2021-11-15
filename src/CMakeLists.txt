@@ -15,3 +15,4 @@ target_link_libraries(
 
 
 add_subdirectory(tutorial_01_simple_project)
+add_subdirectory(tutorial_02_well_structured_project)
