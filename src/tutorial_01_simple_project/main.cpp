@@ -2,11 +2,26 @@
 
 #include "oatpp/network/Server.hpp"
 #include "oatpp/network/tcp/server/ConnectionProvider.hpp"
+#include <oatpp/web/server/HttpRequestHandler.hpp>
+
+/**
+ * Custom Request Handler
+ * */
+class Handler : public oatpp::web::server::HttpRequestHandler {
+public:
+  std::shared_ptr<OutgoingResponse> handle(const std::shared_ptr<IncomingRequest>& request) override {
+    return ResponseFactory::createResponse(Status::CODE_200, "Hello World!");
+  }
+};
+
 
 void run() {
 
   /* Create Router for HTTP requests routing */
   auto router = oatpp::web::server::HttpRouter::createShared();
+
+  /* add handler for router '/hello' */
+  router->route("GET", "/hello", std::make_shared<Handler>());
 
   /* Create HTTP connection handler with router */
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
