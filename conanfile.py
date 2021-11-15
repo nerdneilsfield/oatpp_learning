@@ -15,12 +15,13 @@ class CppStarterProject(ConanFile):
         "docopt.cpp/0.6.2",
         "fmt/8.0.1",
         "spdlog/1.9.2",
+        "oatpp/1.2.5"
     )
     generators = "cmake", "gcc", "txt", "cmake_find_package"
 
     def requirements(self):
+        pass
         if self.options.cpp_starter_use_imgui == "ON":
             self.requires("imgui-sfml/2.1@bincrafters/stable")
         if self.options.cpp_starter_use_sdl == "ON":
             self.requires("sdl2/2.0.10@bincrafters/stable")
-
